@@ -2,7 +2,7 @@
 slug: mon-super-article-bien-reference
 title: Mon Super article
 description: article test sur perron
-price: 12€
+price: 15€
 duration: 30min
 
 ---
@@ -11,4 +11,3 @@ duration: 30min
 
 locercsf rff erg zrg zg efd    efr vcqer qdf v rtgrqf erg erg qrvqr  verfeq
  **qqch en mis valeur**
-
