@@ -1,0 +1,60 @@
+backend:
+  name: github
+  repo: ton-org/mon-repo
+  branch: main
+  base_url: https://ton-worker.workers.dev  # URL du worker sveltia-cms-auth
+
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+locale: "fr"
+
+collections:
+  # 1) Articles: fichiers Markdown avec front matter YAML
+  - name: "articles"
+    label: "Articles"
+    folder: "app/content/articles"
+    create: true
+    extension: "md"
+    format: "yaml"
+    slug: "{{slug}}"
+    fields:
+      - { label: "Titre", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text", required: false }
+      - { label: "Corps", name: "body", widget: "markdown" }
+
+  # 2) Pages: fichiers ERB (avec front matter YAML en tête si tu veux des champs)
+  #    Ici on référence explicitement root.erb et success.erb
+  - name: "pages"
+    label: "Pages"
+    files:
+      - name: "home"
+        label: "Page d’accueil"
+        file: "app/content/pages/root.erb"
+        format: "yaml"
+        fields:
+          - { label: "Titre", name: "title", widget: "string", required: false }
+          - { label: "Contenu (ERB)", name: "body", widget: "text" }
+      - name: "success"
+        label: "Page succès"
+        file: "app/content/pages/success.erb"
+        format: "yaml"
+        fields:
+          - { label: "Titre", name: "title", widget: "string", required: false }
+          - { label: "Contenu (ERB)", name: "body", widget: "text" }
+
+  # 3) Données éditoriales (type _data Jekyll) : YAML dans app/content/data
+  - name: "data"
+    label: "Données"
+    files:
+      - name: "features"
+        label: "Features"
+        file: "app/content/data/features.yml"
+        format: "yaml"
+        fields:
+          - label: "Éléments"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "name", name: "name", widget: "string" }
+              - { label: "description", name: "description", widget: "text" }
